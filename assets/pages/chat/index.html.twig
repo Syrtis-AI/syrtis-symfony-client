@@ -1,0 +1,6 @@
+{%- extends '@front/layouts/private/layout.html.twig' -%}
+
+{#- The conversation, and nothing around it: the panel it opens in is the frame. -#}
+{%- block page_body -%}
+    {{ vue(render_pass, '@WexampleSymfonyAiBundle/vue/collection/chat/message-chat', { sessionId: session.id }) }}
+{%- endblock -%}

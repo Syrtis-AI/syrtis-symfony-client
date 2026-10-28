@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    SyrtisSymfonyClient\:
+        resource: '../../{Controller,EventListener,Repository,Service}'
+
+    SyrtisSymfonyClient\Api\Controller\:
+        resource: '../../Api/Controller/*'
+        tags: ['controller.service_arguments']
+
+    SyrtisSymfonyClient\Api\Normalizer\:
+        resource: '../../Api/Normalizer/*'
+        tags: ['serializer.normalizer']
+
+    # The client to Syrtis, built once from the configuration.
+    SyrtisClient\Common\SyrtisClient:
+        factory: ['@SyrtisSymfonyClient\Service\SyrtisClientFactory', 'create']

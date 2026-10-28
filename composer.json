@@ -1,11 +1,32 @@
 {
-  "name": "wexample/symfony-client",
+  "name": "syrtis/symfony-client",
+  "description": "Syrtis as the engine behind the conversations of symfony-ai: a session of the app is a session on Syrtis, what the agent says comes back to the app",
   "version": "1.0.1",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Wexample\\SymfonyClient\\": "src/"
+      "SyrtisSymfonyClient\\": "src/"
     }
-  }
+  },
+  "require": {
+    "php": ">=8.5",
+    "doctrine/orm": "^3.3",
+    "syrtis/php-client": ">=6.2.0",
+    "wexample/php-helpers": ">=7.0.4",
+    "wexample/symfony-ai": ">=4.0.1",
+    "wexample/symfony-api": ">=14.0.7",
+    "wexample/symfony-helpers": ">=18.0.3"
+  },
+  "extra": {
+    "install": {
+      "bundle_env": "all"
+    }
+  },
+  "authors": [
+    {
+      "name": "Syrtis",
+      "email": "contact@syrtis.ai"
+    }
+  ]
 }
