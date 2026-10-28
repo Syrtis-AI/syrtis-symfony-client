@@ -6,10 +6,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use SyrtisClient\Common\SyrtisClient;
 use SyrtisClient\Repository\SessionRepository as RemoteSessionRepository;
-use Wexample\SymfonyAi\Entity\Message;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
+use Wexample\SymfonyAi\Entity\Message;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**

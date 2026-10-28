@@ -3,10 +3,10 @@
 namespace SyrtisSymfonyClient\Api\Normalizer\Entity\SyrtisSession;
 
 use ArrayObject;
-use Wexample\SymfonyAi\Api\Normalizer\Entity\Session\DefaultSessionNormalizer;
 use SyrtisSymfonyClient\Api\Dto\SyrtisSessionDto;
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
+use Wexample\SymfonyAi\Api\Normalizer\Entity\Session\DefaultSessionNormalizer;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 use Wexample\SymfonyHelpers\Interface\NormalizableDataInterface;
 

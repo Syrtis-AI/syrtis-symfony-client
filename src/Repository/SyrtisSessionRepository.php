@@ -2,9 +2,9 @@
 
 namespace SyrtisSymfonyClient\Repository;
 
-use Wexample\SymfonyAi\Repository\SessionRepository;
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
+use Wexample\SymfonyAi\Repository\SessionRepository;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**
