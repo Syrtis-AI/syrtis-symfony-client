@@ -1,7 +1,7 @@
 {
   "name": "syrtis/symfony-client",
   "description": "Syrtis as the engine behind the conversations of symfony-ai: a session of the app is a session on Syrtis, what the agent says comes back to the app",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "library",
   "license": "MIT",
   "autoload": {
