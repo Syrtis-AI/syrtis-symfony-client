@@ -64,10 +64,14 @@ final readonly class SyrtisConversation
         /** @var SyrtisSession $session */
         $session = $message->getSession();
 
+        // What the account wrote is part of the conversation the agent reads
+        // back: stamped `history`, as the scenario expects of a turn.
         $this->remoteSessions()->sendMessage(
             sessionSecureId: $this->remoteId($session),
-            content: $payload ? null : $message->getBody(),
-            messages: $payload ? [$payload] : [],
+            messages: [$payload ?? [
+                'content' => $message->getBody(),
+                'stamps' => [ToolResultMessage::STAMP_HISTORY],
+            ]],
         );
     }
 
