@@ -1,6 +1,11 @@
 {%- extends '@front/layouts/private/layout.html.twig' -%}
 
-{#- The conversation, and nothing around it: the panel it opens in is the frame. -#}
+{#- The conversation alone, edge to edge, its input at the foot: the zone it
+    opens in is the frame. -#}
+{%- set page_zone_flush = true -%}
+
 {%- block page_body -%}
-    {{ vue(render_pass, '@WexampleSymfonyAiBundle/vue/collection/chat/message-chat', { sessionId: session.id }) }}
+    <div class="page--fill">
+        {{ vue(render_pass, '@WexampleSymfonyAiBundle/vue/collection/chat/message-chat', { sessionId: session.id }) }}
+    </div>
 {%- endblock -%}

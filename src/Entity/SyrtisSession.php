@@ -37,6 +37,9 @@ class SyrtisSession extends Session
 
         $this->user = $user;
         $this->scenario = $scenario;
+        // The agent is the scenario: what a session names its agent by when
+        // the app holds no record of it.
+        $this->setAgentName('syrtis:'.$scenario);
     }
 
     public function getUser(): UserEntityInterface

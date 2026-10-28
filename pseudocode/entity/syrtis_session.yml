@@ -1,0 +1,179 @@
+items:
+  - name: SyrtisSession
+    type: class
+    extends: Session
+    description: "A conversation held by Syrtis: the account holding it here, the scenario it\nruns on there, and the session Syrtis opened for it — null until the first\nmessage is sent, which is when Syrtis is asked for one."
+    properties:
+      - name: agent
+        type: Wexample\SymfonyAi\Entity\Agent
+        nullable: true
+        default: null
+      - name: agentName
+        type: string
+      - name: name
+        type: string
+        nullable: true
+        default: null
+      - name: model
+        type: Wexample\SymfonyAi\Entity\Model
+        nullable: true
+        default: null
+      - name: turnCount
+        type: int
+        default: 0
+      - name: dateCreated
+        type: DateTimeInterface
+        nullable: true
+        default: null
+      - name: dateLastMessage
+        type: DateTimeInterface
+        nullable: true
+        default: null
+      - name: id
+        type: Symfony\Component\Uid\Uuid
+      - name: user
+        type: UserEntityInterface
+      - name: scenario
+        type: string
+      - name: remoteId
+        type: string
+        nullable: true
+        default: null
+    methods:
+      - type: method
+        name: getAgent
+        return:
+          type: Wexample\SymfonyAi\Entity\Agent
+      - type: method
+        name: setAgent
+        parameters:
+          - type: Wexample\SymfonyAi\Entity\Agent
+            name: agent
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getAgentName
+        return:
+          type: string
+      - type: method
+        name: setAgentName
+        parameters:
+          - type: string
+            name: agentName
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getName
+        return:
+          type: string
+      - type: method
+        name: setName
+        parameters:
+          - type: string
+            name: name
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getModel
+        return:
+          type: Wexample\SymfonyAi\Entity\Model
+      - type: method
+        name: setModel
+        parameters:
+          - type: Wexample\SymfonyAi\Entity\Model
+            name: model
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getTurnCount
+        return:
+          type: int
+      - type: method
+        name: setTurnCount
+        parameters:
+          - type: int
+            name: turnCount
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getDateCreated
+        return:
+          type: DateTimeInterface
+      - type: method
+        name: setDateCreated
+        parameters:
+          - type: DateTimeInterface
+            name: dateCreated
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: getDateLastMessage
+        return:
+          type: DateTimeInterface
+      - type: method
+        name: setDateLastMessage
+        parameters:
+          - type: DateTimeInterface
+            name: dateLastMessage
+        return:
+          type: Wexample\SymfonyAi\Entity\Session
+      - type: method
+        name: buildEntityPath
+        parameters:
+          - type: string
+            name: className
+        return:
+          type: string
+      - type: method
+        name: getEntityKeyName
+        return:
+          type: string
+      - type: method
+        name: getEntityShortName
+        return:
+          type: string
+      - type: method
+        name: getId
+        return:
+          type: Symfony\Component\Uid\Uuid
+      - type: method
+        name: setId
+        parameters:
+          - type: Symfony\Component\Uid\Uuid
+            name: id
+        return:
+          type: void
+      - type: method
+        name: getTableizedName
+        return:
+          type: string
+      - type: method
+        name: getCamelName
+        return:
+          type: string
+      - type: method
+        name: __construct
+        parameters:
+          - type: UserEntityInterface
+            name: user
+          - type: string
+            name: scenario
+      - type: method
+        name: getUser
+        return:
+          type: UserEntityInterface
+      - type: method
+        name: getScenario
+        return:
+          type: string
+      - type: method
+        name: getRemoteId
+        return:
+          type: string
+      - type: method
+        name: setRemoteId
+        parameters:
+          - type: string
+            name: remoteId
+        return:
+          type: self

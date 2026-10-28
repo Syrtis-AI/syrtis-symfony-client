@@ -3,7 +3,6 @@
 namespace SyrtisSymfonyClient;
 
 use Wexample\SymfonyHelpers\Class\AbstractBundle;
-use Wexample\SymfonyHelpers\Helper\BundleHelper;
 use Wexample\SymfonyHelpers\Interface\LoaderBundleInterface;
 use Wexample\SymfonyPseudocode\Interface\PseudocodeBundleInterface;
 
@@ -17,10 +16,14 @@ use Wexample\SymfonyPseudocode\Interface\PseudocodeBundleInterface;
  */
 class SyrtisSymfonyClientBundle extends AbstractBundle implements LoaderBundleInterface, PseudocodeBundleInterface
 {
+    /**
+     * Named after the composer package: the alias the helper derives reads a
+     * `Vendor\Package` namespace, which a Syrtis package does not have.
+     */
     public static function getLoaderFrontPaths(): array
     {
         return [
-            BundleHelper::getBundleCssAlias(static::class) => __DIR__.'/../assets/',
+            '@syrtis/symfony-client' => __DIR__.'/../assets/',
         ];
     }
 

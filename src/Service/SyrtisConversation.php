@@ -89,7 +89,7 @@ final readonly class SyrtisConversation
     private function remoteSessions(): RemoteSessionRepository
     {
         /** @var RemoteSessionRepository $repository */
-        $repository = $this->client->getRepository(RemoteSessionRepository::class);
+        $repository = $this->client->getRepository('session');
 
         return $repository;
     }

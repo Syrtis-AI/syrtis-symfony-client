@@ -1,0 +1,8 @@
+{
+  "name": "@syrtis/symfony-client",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@wexample/js-api": "*",
+    "@wexample/js-api-entity": "*"
+  }
+}

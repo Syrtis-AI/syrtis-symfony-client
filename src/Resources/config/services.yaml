@@ -5,7 +5,7 @@ services:
         public: false
 
     SyrtisSymfonyClient\:
-        resource: '../../{Controller,EventListener,Repository,Service}'
+        resource: '../../{Controller,EventListener,Repository,Security,Service}'
 
     SyrtisSymfonyClient\Api\Controller\:
         resource: '../../Api/Controller/*'
