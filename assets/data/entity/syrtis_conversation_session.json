@@ -1,11 +1,11 @@
 {
-    "name": "syrtis-conversation-session",
+    "name": "syrtis_conversation_session",
     "type": "class",
     "extends": "ConversationSession",
     "description": "A conversation held by Syrtis: the account holding it here, the scenario it\nruns on there, and the session Syrtis opened for it — null until the first\nmessage is sent, which is when Syrtis is asked for one.",
     "properties": [
         {
-            "name": "conversation-agent",
+            "name": "agent",
             "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationAgent",
             "nullable": true,
             "default": null
@@ -21,7 +21,7 @@
             "default": null
         },
         {
-            "name": "conversation-model",
+            "name": "model",
             "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationModel",
             "nullable": true,
             "default": null
@@ -81,7 +81,7 @@
             "parameters": [
                 {
                     "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationAgent",
-                    "name": "conversation-agent"
+                    "name": "agent"
                 }
             ],
             "return": {
@@ -141,7 +141,7 @@
             "parameters": [
                 {
                     "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationModel",
-                    "name": "conversation-model"
+                    "name": "model"
                 }
             ],
             "return": {
