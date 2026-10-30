@@ -4,7 +4,7 @@ namespace SyrtisSymfonyClient\Repository;
 
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
-use Wexample\SymfonyAi\Repository\SessionRepository;
+use Wexample\SymfonyAiConversation\Repository\SessionRepository;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**

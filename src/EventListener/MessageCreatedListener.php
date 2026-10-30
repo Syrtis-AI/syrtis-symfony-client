@@ -6,8 +6,8 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Service\SyrtisConversation;
 use SyrtisSymfonyClient\Service\ToolResultMessage;
-use Wexample\SymfonyAi\Entity\Message;
-use Wexample\SymfonyAi\Event\MessageCreatedEvent;
+use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Event\MessageCreatedEvent;
 
 /**
  * Answers the turns written in a Syrtis session: what the account wrote goes

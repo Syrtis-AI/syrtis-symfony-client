@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
 use Wexample\Pseudocode\Attribute\PseudocodeExport;
-use Wexample\SymfonyAi\Entity\Session;
+use Wexample\SymfonyAiConversation\Entity\Session;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**

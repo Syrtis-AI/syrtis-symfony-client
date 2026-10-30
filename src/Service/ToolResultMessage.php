@@ -2,7 +2,7 @@
 
 namespace SyrtisSymfonyClient\Service;
 
-use Wexample\SymfonyAi\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\Message;
 
 /**
  * A tool message of symfony-ai is one of two things, both json in its body:

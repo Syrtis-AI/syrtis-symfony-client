@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
-use Wexample\SymfonyAi\Entity\Message;
-use Wexample\SymfonyAi\Repository\MessageRepository;
+use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Repository\MessageRepository;
 use Wexample\SymfonyApi\Api\Class\ApiResponse;
 use Wexample\SymfonyApi\Api\Controller\AbstractApiController;
 

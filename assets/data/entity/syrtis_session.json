@@ -6,7 +6,7 @@
     "properties": [
         {
             "name": "agent",
-            "type": "Wexample\\SymfonyAi\\Entity\\Agent",
+            "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent",
             "nullable": true,
             "default": null
         },
@@ -22,7 +22,7 @@
         },
         {
             "name": "model",
-            "type": "Wexample\\SymfonyAi\\Entity\\Model",
+            "type": "Wexample\\SymfonyAiConversation\\Entity\\Model",
             "nullable": true,
             "default": null
         },
@@ -72,7 +72,7 @@
             "type": "method",
             "name": "getAgent",
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Agent"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent"
             }
         },
         {
@@ -80,12 +80,12 @@
             "name": "setAgent",
             "parameters": [
                 {
-                    "type": "Wexample\\SymfonyAi\\Entity\\Agent",
+                    "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent",
                     "name": "agent"
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
@@ -105,7 +105,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
@@ -125,14 +125,14 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
             "type": "method",
             "name": "getModel",
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Model"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Model"
             }
         },
         {
@@ -140,12 +140,12 @@
             "name": "setModel",
             "parameters": [
                 {
-                    "type": "Wexample\\SymfonyAi\\Entity\\Model",
+                    "type": "Wexample\\SymfonyAiConversation\\Entity\\Model",
                     "name": "model"
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
@@ -165,7 +165,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
@@ -185,7 +185,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {
@@ -205,7 +205,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAi\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
             }
         },
         {

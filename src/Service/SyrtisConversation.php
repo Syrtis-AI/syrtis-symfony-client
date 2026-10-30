@@ -9,7 +9,7 @@ use SyrtisClient\Repository\SessionRepository as RemoteSessionRepository;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Entity\SyrtisSession;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
-use Wexample\SymfonyAi\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\Message;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**
