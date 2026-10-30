@@ -1,11 +1,11 @@
 items:
-  - name: SyrtisSession
+  - name: SyrtisConversationSession
     type: class
-    extends: Session
+    extends: ConversationSession
     description: "A conversation held by Syrtis: the account holding it here, the scenario it\nruns on there, and the session Syrtis opened for it — null until the first\nmessage is sent, which is when Syrtis is asked for one."
     properties:
       - name: agent
-        type: Wexample\SymfonyAiConversation\Entity\Agent
+        type: Wexample\SymfonyAiConversation\Entity\ConversationAgent
         nullable: true
         default: null
       - name: agentName
@@ -15,7 +15,7 @@ items:
         nullable: true
         default: null
       - name: model
-        type: Wexample\SymfonyAiConversation\Entity\Model
+        type: Wexample\SymfonyAiConversation\Entity\ConversationModel
         nullable: true
         default: null
       - name: turnCount
@@ -43,14 +43,14 @@ items:
       - type: method
         name: getAgent
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Agent
+          type: Wexample\SymfonyAiConversation\Entity\ConversationAgent
       - type: method
         name: setAgent
         parameters:
-          - type: Wexample\SymfonyAiConversation\Entity\Agent
+          - type: Wexample\SymfonyAiConversation\Entity\ConversationAgent
             name: agent
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getAgentName
         return:
@@ -61,7 +61,7 @@ items:
           - type: string
             name: agentName
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getName
         return:
@@ -72,18 +72,18 @@ items:
           - type: string
             name: name
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getModel
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Model
+          type: Wexample\SymfonyAiConversation\Entity\ConversationModel
       - type: method
         name: setModel
         parameters:
-          - type: Wexample\SymfonyAiConversation\Entity\Model
+          - type: Wexample\SymfonyAiConversation\Entity\ConversationModel
             name: model
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getTurnCount
         return:
@@ -94,7 +94,7 @@ items:
           - type: int
             name: turnCount
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getDateCreated
         return:
@@ -105,7 +105,7 @@ items:
           - type: DateTimeInterface
             name: dateCreated
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: getDateLastMessage
         return:
@@ -116,7 +116,7 @@ items:
           - type: DateTimeInterface
             name: dateLastMessage
         return:
-          type: Wexample\SymfonyAiConversation\Entity\Session
+          type: Wexample\SymfonyAiConversation\Entity\ConversationSession
       - type: method
         name: buildEntityPath
         parameters:

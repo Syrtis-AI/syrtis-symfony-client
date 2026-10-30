@@ -7,9 +7,9 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use SyrtisClient\Common\SyrtisClient;
 use SyrtisClient\Repository\SessionRepository as RemoteSessionRepository;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
-use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**
@@ -35,13 +35,13 @@ final readonly class SyrtisConversation
      * The conversation the chat opens on for an account: the one it last
      * spoke in, or a new one.
      */
-    public function current(UserEntityInterface $user): SyrtisSession
+    public function current(UserEntityInterface $user): SyrtisConversationSession
     {
         return $this->sessions->findLastForUser($user, $this->scenario)
             ?? $this->open($user);
     }
 
-    public function open(UserEntityInterface $user): SyrtisSession
+    public function open(UserEntityInterface $user): SyrtisConversationSession
     {
         $session = $this->sessions->createNewSyrtisSession($user, $this->scenario);
         $session->setDateCreated(new \DateTime());
@@ -59,9 +59,9 @@ final readonly class SyrtisConversation
      * @param array<string, mixed>|null $payload The message as Syrtis takes
      *     it, in place of the plain text: a tool result, with its stamps.
      */
-    public function send(Message $message, ?array $payload = null): void
+    public function send(ConversationMessage $message, ?array $payload = null): void
     {
-        /** @var SyrtisSession $session */
+        /** @var SyrtisConversationSession $session */
         $session = $message->getSession();
 
         // What the account wrote is part of the conversation the agent reads
@@ -75,7 +75,7 @@ final readonly class SyrtisConversation
         );
     }
 
-    private function remoteId(SyrtisSession $session): string
+    private function remoteId(SyrtisConversationSession $session): string
     {
         if (null === $session->getRemoteId()) {
             $remote = $this->remoteSessions()->createSession(

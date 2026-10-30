@@ -1,4 +1,4 @@
-import syrtisSession from '../data/entity/syrtis_session.json';
+import syrtisSession from '../data/entity/syrtis_conversation_session.json';
 
 type EntitySchema = { name: string };
 

@@ -2,7 +2,7 @@
 
 namespace SyrtisSymfonyClient\Repository;
 
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
 use Wexample\SymfonyAiConversation\Repository\SessionRepository;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
@@ -17,16 +17,16 @@ class SyrtisSessionRepository extends SessionRepository
 {
     use SyrtisSessionEntityManipulatorTrait;
 
-    public function createNewSyrtisSession(UserEntityInterface $user, string $scenario): SyrtisSession
+    public function createNewSyrtisSession(UserEntityInterface $user, string $scenario): SyrtisConversationSession
     {
-        return new SyrtisSession($user, $scenario);
+        return new SyrtisConversationSession($user, $scenario);
     }
 
     /**
      * The conversation the account last spoke in, on that scenario: the one
      * the chat opens on. Null before the first.
      */
-    public function findLastForUser(UserEntityInterface $user, string $scenario): ?SyrtisSession
+    public function findLastForUser(UserEntityInterface $user, string $scenario): ?SyrtisConversationSession
     {
         return $this->queryLastSpokenFirst()
             ->where($this->queryField('user').' = :user')
@@ -42,7 +42,7 @@ class SyrtisSessionRepository extends SessionRepository
      * The conversation Syrtis knows under that id, which is how a message it
      * pushes names the session it belongs to.
      */
-    public function findOneByRemoteId(string $remoteId): ?SyrtisSession
+    public function findOneByRemoteId(string $remoteId): ?SyrtisConversationSession
     {
         return $this->findOneBy(['remoteId' => $remoteId]);
     }

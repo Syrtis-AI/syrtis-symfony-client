@@ -1,5 +1,5 @@
-import SyrtisSession from '../Entity/SyrtisSession.js';
+import SyrtisConversationSession from '../Entity/SyrtisConversationSession.js';
 
 export default [
-  SyrtisSession,
+  SyrtisConversationSession,
 ];

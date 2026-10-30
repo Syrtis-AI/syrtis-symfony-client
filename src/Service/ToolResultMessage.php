@@ -2,7 +2,7 @@
 
 namespace SyrtisSymfonyClient\Service;
 
-use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
 
 /**
  * A tool message of symfony-ai is one of two things, both json in its body:
@@ -21,7 +21,7 @@ final class ToolResultMessage
      * @return array{tool: string, callId: string, results: array}|null Null
      *     for a tool message that is a call, or says nothing readable.
      */
-    public static function read(Message $message): ?array
+    public static function read(ConversationMessage $message): ?array
     {
         $body = json_decode((string) $message->getBody(), true);
 

@@ -3,7 +3,7 @@
 namespace SyrtisSymfonyClient\Security\Voter;
 
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
 use Wexample\SymfonyHelpers\Voter\AbstractEntityVoter;
 

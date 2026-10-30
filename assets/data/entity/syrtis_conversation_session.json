@@ -1,12 +1,12 @@
 {
-    "name": "syrtis_session",
+    "name": "syrtis-conversation-session",
     "type": "class",
-    "extends": "Session",
+    "extends": "ConversationSession",
     "description": "A conversation held by Syrtis: the account holding it here, the scenario it\nruns on there, and the session Syrtis opened for it — null until the first\nmessage is sent, which is when Syrtis is asked for one.",
     "properties": [
         {
-            "name": "agent",
-            "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent",
+            "name": "conversation-agent",
+            "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationAgent",
             "nullable": true,
             "default": null
         },
@@ -21,8 +21,8 @@
             "default": null
         },
         {
-            "name": "model",
-            "type": "Wexample\\SymfonyAiConversation\\Entity\\Model",
+            "name": "conversation-model",
+            "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationModel",
             "nullable": true,
             "default": null
         },
@@ -72,7 +72,7 @@
             "type": "method",
             "name": "getAgent",
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationAgent"
             }
         },
         {
@@ -80,12 +80,12 @@
             "name": "setAgent",
             "parameters": [
                 {
-                    "type": "Wexample\\SymfonyAiConversation\\Entity\\Agent",
-                    "name": "agent"
+                    "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationAgent",
+                    "name": "conversation-agent"
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
@@ -105,7 +105,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
@@ -125,14 +125,14 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
             "type": "method",
             "name": "getModel",
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Model"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationModel"
             }
         },
         {
@@ -140,12 +140,12 @@
             "name": "setModel",
             "parameters": [
                 {
-                    "type": "Wexample\\SymfonyAiConversation\\Entity\\Model",
-                    "name": "model"
+                    "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationModel",
+                    "name": "conversation-model"
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
@@ -165,7 +165,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
@@ -185,7 +185,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {
@@ -205,7 +205,7 @@
                 }
             ],
             "return": {
-                "type": "Wexample\\SymfonyAiConversation\\Entity\\Session"
+                "type": "Wexample\\SymfonyAiConversation\\Entity\\ConversationSession"
             }
         },
         {

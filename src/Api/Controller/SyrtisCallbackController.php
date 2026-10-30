@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
-use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
 use Wexample\SymfonyAiConversation\Repository\MessageRepository;
 use Wexample\SymfonyApi\Api\Class\ApiResponse;
 use Wexample\SymfonyApi\Api\Controller\AbstractApiController;
@@ -87,9 +87,9 @@ class SyrtisCallbackController extends AbstractApiController
     private static function typeOf(array $remote): string
     {
         return match ($remote['contentType'] ?? null) {
-            self::CONTENT_TYPE_TOOL_CALL => Message::TYPE_TOOL,
-            self::CONTENT_TYPE_ERROR => Message::TYPE_ERROR,
-            default => Message::TYPE_ASSISTANT,
+            self::CONTENT_TYPE_TOOL_CALL => ConversationMessage::TYPE_TOOL,
+            self::CONTENT_TYPE_ERROR => ConversationMessage::TYPE_ERROR,
+            default => ConversationMessage::TYPE_ASSISTANT,
         };
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SyrtisSymfonyClient\Api\Dto;
 
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use Wexample\SymfonyAiConversation\Api\Dto\SessionDto;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 

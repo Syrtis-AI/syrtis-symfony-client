@@ -3,10 +3,10 @@
 namespace SyrtisSymfonyClient\EventListener;
 
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use SyrtisSymfonyClient\Service\SyrtisConversation;
 use SyrtisSymfonyClient\Service\ToolResultMessage;
-use Wexample\SymfonyAiConversation\Entity\Message;
+use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
 use Wexample\SymfonyAiConversation\Event\MessageCreatedEvent;
 
 /**
@@ -26,13 +26,13 @@ final readonly class MessageCreatedListener
     {
         $message = $event->message;
 
-        if (! $message->getSession() instanceof SyrtisSession) {
+        if (! $message->getSession() instanceof SyrtisConversationSession) {
             return;
         }
 
-        if (Message::TYPE_USER === $message->getType()) {
+        if (ConversationMessage::TYPE_USER === $message->getType()) {
             $this->conversation->send($message);
-        } elseif (Message::TYPE_TOOL === $message->getType() && $result = ToolResultMessage::read($message)) {
+        } elseif (ConversationMessage::TYPE_TOOL === $message->getType() && $result = ToolResultMessage::read($message)) {
             $this->conversation->send($message, ToolResultMessage::toSyrtis($result));
         }
     }

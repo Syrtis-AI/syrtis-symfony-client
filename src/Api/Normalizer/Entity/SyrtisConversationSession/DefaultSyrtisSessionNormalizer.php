@@ -1,12 +1,12 @@
 <?php
 
-namespace SyrtisSymfonyClient\Api\Normalizer\Entity\SyrtisSession;
+namespace SyrtisSymfonyClient\Api\Normalizer\Entity\SyrtisConversationSession;
 
 use ArrayObject;
 use SyrtisSymfonyClient\Api\Dto\SyrtisSessionDto;
-use SyrtisSymfonyClient\Entity\SyrtisSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
 use SyrtisSymfonyClient\Entity\Traits\Manipulator\SyrtisSessionEntityManipulatorTrait;
-use Wexample\SymfonyAiConversation\Api\Normalizer\Entity\Session\DefaultSessionNormalizer;
+use Wexample\SymfonyAiConversation\Api\Normalizer\Entity\ConversationSession\DefaultSessionNormalizer;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 use Wexample\SymfonyHelpers\Interface\NormalizableDataInterface;
 
@@ -19,7 +19,7 @@ class DefaultSyrtisSessionNormalizer extends DefaultSessionNormalizer
     use SyrtisSessionEntityManipulatorTrait;
 
     public function normalizeEntity(
-        SyrtisSession|AbstractEntity $entity,
+        SyrtisConversationSession|AbstractEntity $entity,
         ?string $format = null,
         array $context = []
     ): array|string|int|float|bool|ArrayObject|NormalizableDataInterface|null {

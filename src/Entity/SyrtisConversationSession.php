@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
 use Wexample\Pseudocode\Attribute\PseudocodeExport;
-use Wexample\SymfonyAiConversation\Entity\Session;
+use Wexample\SymfonyAiConversation\Entity\ConversationSession;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
 
 /**
@@ -16,8 +16,8 @@ use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
  */
 #[PseudocodeExport(inherited: true)]
 #[ORM\Entity(repositoryClass: SyrtisSessionRepository::class)]
-#[ORM\Table(name: 'syrtis_session')]
-class SyrtisSession extends Session
+#[ORM\Table(name: 'ai_conversation_syrtis_session')]
+class SyrtisConversationSession extends ConversationSession
 {
     #[ORM\ManyToOne(targetEntity: UserEntityInterface::class)]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
