@@ -32,8 +32,8 @@ class SyrtisCallbackController extends AbstractApiController
     /** What Syrtis calls a message written by the account, which the app already holds. */
     final public const string ORIGIN_USER = 'user';
 
-    final public const string CONTENT_TYPE_TOOL_CALL = 'tool_call';
-    final public const string CONTENT_TYPE_ERROR = 'error';
+    final public const string CONTENT_TYPE_TOOL_CALL = 'core/tool_call';
+    final public const string CONTENT_TYPE_ERROR = 'core/error';
 
     #[Route(path: 'message', name: 'message', methods: [Request::METHOD_POST])]
     public function message(
