@@ -1,7 +1,7 @@
 {
   "name": "syrtis/symfony-client",
   "description": "Syrtis as the engine behind the conversations of symfony-ai-conversation: a session of the app is a session on Syrtis, what the agent says comes back to the app",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -12,7 +12,7 @@
   "require": {
     "php": ">=8.5",
     "doctrine/orm": "^3.3",
-    "syrtis/php-client": ">=6.2.0",
+    "syrtis/php-client": ">=7.0.0",
     "wexample/php-helpers": ">=7.0.4",
     "wexample/symfony-ai-conversation": ">=1.0.1",
     "wexample/symfony-api": ">=14.0.7",
