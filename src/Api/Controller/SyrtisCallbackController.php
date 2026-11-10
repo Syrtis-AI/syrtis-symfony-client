@@ -16,8 +16,9 @@ use Wexample\SymfonyApi\Api\Controller\AbstractApiController;
 
 /**
  * Where Syrtis pushes what a session produces: a node of the app's scenario
- * posts each message here, and it becomes a message of symfony-ai — which the
- * app's live topics carry to the browser from there.
+ * posts here — one `message`, or the `messages` of a turn, an answer and the
+ * tools it calls —, and each becomes a message of symfony-ai, which the app's
+ * live topics carry to the browser from there.
  *
  * The call carries a secret the scenario was given, in place of a signature.
  * A session the app does not hold is answered as ignored, not as an error: the
@@ -48,37 +49,53 @@ class SyrtisCallbackController extends AbstractApiController
         }
 
         $payload = $request->toArray();
-        $remote = $payload['message'] ?? null;
+        $remotes = $payload['messages'] ?? [$payload['message'] ?? null];
 
-        if (! is_string($payload['session'] ?? null) || ! is_array($remote) || ! is_string($remote['id'] ?? null)) {
-            return self::apiResponseError(message: 'A message names its session and carries an id.');
+        if (! is_string($payload['session'] ?? null) || ! is_array($remotes) || ! $remotes) {
+            return self::apiResponseError(message: 'A push names its session and carries its messages.');
+        }
+
+        foreach ($remotes as $remote) {
+            if (! is_array($remote) || ! is_string($remote['id'] ?? null)) {
+                return self::apiResponseError(message: 'Each message carries an id.');
+            }
         }
 
         $session = $sessions->findOneByRemoteId($payload['session']);
 
-        // Already held — the account's own turn, or a message pushed twice.
-        if (! $session
-            || self::ORIGIN_USER === ($remote['origin'] ?? null)
-            || $messages->findOneBy(['providerMessageIdentifier' => $remote['id']])) {
+        if (! $session) {
             return self::apiResponseSuccess(data: ['ignored' => true]);
         }
 
-        $message = $messages->createNewMessage(
-            $session,
-            self::typeOf($remote),
-            is_string($remote['content'] ?? null) ? $remote['content'] : json_encode($remote['content'] ?? null, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-        );
-        $message->setProviderMessageIdentifier($remote['id']);
+        $ids = [];
 
-        if (is_string($remote['dateCreated'] ?? null)) {
-            $message->setDateCreated(new DateTime($remote['dateCreated']));
+        foreach ($remotes as $remote) {
+            // Already held — the account's own turn, or a message pushed twice.
+            if (self::ORIGIN_USER === ($remote['origin'] ?? null)
+                || $messages->findOneBy(['providerMessageIdentifier' => $remote['id']])) {
+                continue;
+            }
+
+            $message = $messages->createNewMessage(
+                $session,
+                self::typeOf($remote),
+                is_string($remote['content'] ?? null) ? $remote['content'] : json_encode($remote['content'] ?? null, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            );
+            $message->setProviderMessageIdentifier($remote['id']);
+
+            if (is_string($remote['dateCreated'] ?? null) && '' !== $remote['dateCreated']) {
+                $message->setDateCreated(new DateTime($remote['dateCreated']));
+            }
+
+            $session->setDateLastMessage($message->getDateCreated());
+            $session->setTurnCount($session->getTurnCount() + 1);
+            $messages->save($message);
+            $ids[] = (string) $message->getId();
         }
 
-        $session->setDateLastMessage($message->getDateCreated());
-        $session->setTurnCount($session->getTurnCount() + 1);
-        $messages->save($message);
-
-        return self::apiResponseSuccess(data: ['id' => (string) $message->getId()]);
+        return $ids
+            ? self::apiResponseSuccess(data: ['ids' => $ids])
+            : self::apiResponseSuccess(data: ['ignored' => true]);
     }
 
     /**
