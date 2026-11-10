@@ -15,6 +15,10 @@ services:
         resource: '../../Api/Normalizer/*'
         tags: ['serializer.normalizer']
 
+    # The scenario conversations are opened on: the configured one, unless the
+    # application aliases the interface to its own.
+    SyrtisSymfonyClient\Interface\ScenarioResolverInterface: '@SyrtisSymfonyClient\Service\ConfiguredScenarioResolver'
+
     # The client to Syrtis, built once from the configuration.
     SyrtisClient\Common\SyrtisClient:
         factory: ['@SyrtisSymfonyClient\Service\SyrtisClientFactory', 'create']

@@ -3,11 +3,10 @@
 namespace SyrtisSymfonyClient\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use SyrtisClient\Common\SyrtisClient;
 use SyrtisClient\Repository\SessionRepository as RemoteSessionRepository;
-use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
+use SyrtisSymfonyClient\Interface\ScenarioResolverInterface;
 use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
 use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
 use Wexample\SymfonyHelpers\Entity\Interfaces\UserEntityInterface;
@@ -26,8 +25,7 @@ final readonly class SyrtisConversation
         private SyrtisClient $client,
         private SyrtisSessionRepository $sessions,
         private EntityManagerInterface $entityManager,
-        #[Autowire(param: SyrtisSymfonyClientExtension::PARAMETER_SCENARIO)]
-        private string $scenario,
+        private ScenarioResolverInterface $scenarios,
     ) {
     }
 
@@ -37,13 +35,13 @@ final readonly class SyrtisConversation
      */
     public function current(UserEntityInterface $user): SyrtisConversationSession
     {
-        return $this->sessions->findLastForUser($user, $this->scenario)
+        return $this->sessions->findLastForUser($user, $this->scenarios->getScenario())
             ?? $this->open($user);
     }
 
     public function open(UserEntityInterface $user): SyrtisConversationSession
     {
-        $session = $this->sessions->createNewSyrtisSession($user, $this->scenario);
+        $session = $this->sessions->createNewSyrtisSession($user, $this->scenarios->getScenario());
         $session->setDateCreated(new \DateTime());
 
         $this->entityManager->persist($session);
