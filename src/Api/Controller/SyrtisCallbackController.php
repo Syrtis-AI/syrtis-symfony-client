@@ -10,10 +10,10 @@ use Symfony\Component\Routing\Attribute\Route;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
 use SyrtisSymfonyClient\Repository\SyrtisConversationRepository;
 use Wexample\SymfonyAiConversation\Service\AgentConversationService;
-use Wexample\SymfonyConversation\Entity\ConversationMessage;
-use Wexample\SymfonyConversation\Repository\MessageRepository;
 use Wexample\SymfonyApi\Api\Class\ApiResponse;
 use Wexample\SymfonyApi\Api\Controller\AbstractApiController;
+use Wexample\SymfonyConversation\Entity\ConversationMessage;
+use Wexample\SymfonyConversation\Repository\MessageRepository;
 
 /**
  * Where Syrtis pushes what a session produces: a node of the app's scenario
