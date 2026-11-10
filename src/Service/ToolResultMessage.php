@@ -2,10 +2,10 @@
 
 namespace SyrtisSymfonyClient\Service;
 
-use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
+use Wexample\SymfonyConversation\Entity\ConversationMessage;
 
 /**
- * A tool message of symfony-ai is one of two things, both json in its body:
+ * A tool line of a conversation with an agent is one of two things, both json in its body:
  * what the agent called — `name`, `arguments` —, written when Syrtis pushes
  * the call; what the page answered — `tool`, `callId`, `results` —, written
  * when the page sends it. This reads the second, and writes it as Syrtis

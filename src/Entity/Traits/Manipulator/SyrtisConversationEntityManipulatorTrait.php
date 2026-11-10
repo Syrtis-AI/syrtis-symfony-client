@@ -2,15 +2,15 @@
 
 namespace SyrtisSymfonyClient\Entity\Traits\Manipulator;
 
-use SyrtisSymfonyClient\Entity\SyrtisConversationSession;
+use SyrtisSymfonyClient\Entity\SyrtisConversation;
 use Wexample\SymfonyHelpers\Entity\Traits\Manipulator\EntityManipulatorTrait;
 
-trait SyrtisSessionEntityManipulatorTrait
+trait SyrtisConversationEntityManipulatorTrait
 {
     use EntityManipulatorTrait;
 
     public static function getEntityClassName(): string
     {
-        return SyrtisConversationSession::class;
+        return SyrtisConversation::class;
     }
 }

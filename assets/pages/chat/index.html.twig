@@ -6,6 +6,6 @@
 
 {%- block page_body -%}
     <div class="page--fill">
-        {{ vue(render_pass, '@WexampleSymfonyAiConversationBundle/vue/collection/chat/message-chat', { sessionId: session.id }) }}
+        {{ vue(render_pass, '@WexampleSymfonyAiConversationBundle/vue/collection/chat/message-chat', { conversationId: conversation.id ~ '' }) }}
     </div>
 {%- endblock -%}

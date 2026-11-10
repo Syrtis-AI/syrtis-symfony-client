@@ -8,17 +8,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use SyrtisSymfonyClient\DependencyInjection\SyrtisSymfonyClientExtension;
-use SyrtisSymfonyClient\Repository\SyrtisSessionRepository;
-use Wexample\SymfonyAiConversation\Entity\ConversationMessage;
-use Wexample\SymfonyAiConversation\Repository\MessageRepository;
+use SyrtisSymfonyClient\Repository\SyrtisConversationRepository;
+use Wexample\SymfonyAiConversation\Service\AgentConversationService;
+use Wexample\SymfonyConversation\Entity\ConversationMessage;
+use Wexample\SymfonyConversation\Repository\MessageRepository;
 use Wexample\SymfonyApi\Api\Class\ApiResponse;
 use Wexample\SymfonyApi\Api\Controller\AbstractApiController;
 
 /**
  * Where Syrtis pushes what a session produces: a node of the app's scenario
  * posts here — one `message`, or the `messages` of a turn, an answer and the
- * tools it calls —, and each becomes a message of symfony-ai, which the app's
- * live topics carry to the browser from there.
+ * tools it calls —, and each becomes a line of the conversation written by its
+ * agent, which the app's live topics carry to the browser from there.
  *
  * The call carries a secret the scenario was given, in place of a signature.
  * A session the app does not hold is answered as ignored, not as an error: the
@@ -39,8 +40,9 @@ class SyrtisCallbackController extends AbstractApiController
     #[Route(path: 'message', name: 'message', methods: [Request::METHOD_POST])]
     public function message(
         Request $request,
-        SyrtisSessionRepository $sessions,
+        SyrtisConversationRepository $conversations,
         MessageRepository $messages,
+        AgentConversationService $agentConversations,
         #[Autowire(param: SyrtisSymfonyClientExtension::PARAMETER_CALLBACK_SECRET)]
         string $secret,
     ): ApiResponse {
@@ -61,12 +63,13 @@ class SyrtisCallbackController extends AbstractApiController
             }
         }
 
-        $session = $sessions->findOneByRemoteId($payload['session']);
+        $conversation = $conversations->findOneByRemoteId($payload['session']);
 
-        if (! $session) {
+        if (! $conversation) {
             return self::apiResponseSuccess(data: ['ignored' => true]);
         }
 
+        $agent = $agentConversations->agentParticipant($conversation);
         $ids = [];
 
         foreach ($remotes as $remote) {
@@ -77,9 +80,10 @@ class SyrtisCallbackController extends AbstractApiController
             }
 
             $message = $messages->createNewMessage(
-                $session,
+                $conversation,
                 self::typeOf($remote),
                 is_string($remote['content'] ?? null) ? $remote['content'] : json_encode($remote['content'] ?? null, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                $agent,
             );
             $message->setProviderMessageIdentifier($remote['id']);
 
@@ -87,8 +91,8 @@ class SyrtisCallbackController extends AbstractApiController
                 $message->setDateCreated(new DateTime($remote['dateCreated']));
             }
 
-            $session->setDateLastMessage($message->getDateCreated());
-            $session->setTurnCount($session->getTurnCount() + 1);
+            $conversation->setDateLastMessage($message->getDateCreated());
+            $conversation->setTurnCount($conversation->getTurnCount() + 1);
             $messages->save($message);
             $ids[] = (string) $message->getId();
         }
@@ -106,7 +110,7 @@ class SyrtisCallbackController extends AbstractApiController
         return match ($remote['contentType'] ?? null) {
             self::CONTENT_TYPE_TOOL_CALL => ConversationMessage::TYPE_TOOL,
             self::CONTENT_TYPE_ERROR => ConversationMessage::TYPE_ERROR,
-            default => ConversationMessage::TYPE_ASSISTANT,
+            default => ConversationMessage::TYPE_TEXT,
         };
     }
 }

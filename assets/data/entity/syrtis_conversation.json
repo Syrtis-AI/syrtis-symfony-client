@@ -1,0 +1,87 @@
+{
+    "name": "syrtis_conversation",
+    "type": "class",
+    "description": "A conversation Syrtis holds: the scenario it runs on, the session Syrtis opened for it.",
+    "extends": "AgentConversation",
+    "discriminator": {
+        "property": "kind",
+        "value": "syrtis"
+    },
+    "properties": [
+        {
+            "name": "id",
+            "type": "Symfony\\Component\\Uid\\Uuid",
+            "nullable": false
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "nullable": true
+        },
+        {
+            "name": "dateCreated",
+            "type": "DateTimeInterface",
+            "nullable": true
+        },
+        {
+            "name": "dateLastMessage",
+            "type": "DateTimeInterface",
+            "nullable": true
+        },
+        {
+            "name": "participants",
+            "type": "array",
+            "nullable": false
+        },
+        {
+            "name": "me",
+            "type": "string",
+            "nullable": true
+        },
+        {
+            "name": "lastMessage",
+            "type": "string",
+            "nullable": true
+        },
+        {
+            "name": "unread",
+            "type": "int",
+            "nullable": false
+        },
+        {
+            "name": "kind",
+            "type": "string",
+            "nullable": false
+        },
+        {
+            "name": "agentName",
+            "type": "string",
+            "nullable": false
+        },
+        {
+            "name": "agent",
+            "type": "ConversationAgent",
+            "nullable": true
+        },
+        {
+            "name": "model",
+            "type": "ConversationModel",
+            "nullable": true
+        },
+        {
+            "name": "turnCount",
+            "type": "int",
+            "nullable": false
+        },
+        {
+            "name": "scenario",
+            "type": "string",
+            "nullable": false
+        },
+        {
+            "name": "remoteId",
+            "type": "string",
+            "nullable": true
+        }
+    ]
+}

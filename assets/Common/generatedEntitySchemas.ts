@@ -1,9 +1,9 @@
-import syrtisSession from '../data/entity/syrtis_conversation_session.json';
+import syrtisConversation from '../data/entity/syrtis_conversation.json';
 
 type EntitySchema = { name: string };
 
 export default function getGeneratedEntitySchemas(): Record<string, EntitySchema> {
   return {
-    [syrtisSession.name]: syrtisSession,
+    [syrtisConversation.name]: syrtisConversation,
   };
 }
