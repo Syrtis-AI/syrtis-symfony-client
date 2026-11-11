@@ -1,7 +1,9 @@
 en:
   page_title: Assistant
   page_icon: ph:bold/chat-circle-dots
+  back: Back to the conversations
 
 fr:
   page_title: Assistant
   page_icon: ph:bold/chat-circle-dots
+  back: Retour aux conversations
