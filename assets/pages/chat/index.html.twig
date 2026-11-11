@@ -5,16 +5,7 @@
 {%- set page_zone_flush = true -%}
 
 {%- block page_body -%}
-    <div class="page--fill chat-page">
-        {#- Reached from a list of conversations (`?back=` its address): the
-            way back to it, where the chat is held — the dock's panel. -#}
-        {%- set back = app.request.query.get('back') -%}
-        {%- if back and back starts with '/' -%}
-            <div class="toolbar chat-page--head" data-target-embedded="self">
-                <a class="action-icon" href="{{ back }}" aria-label="{{ '@page::back'|trans }}" data-tooltip="{{ '@page::back'|trans }}">{{ icon('ph:bold/arrow-left') }}</a>
-                <span class="chat-page--title">{{ '@page::page_title'|trans }}</span>
-            </div>
-        {%- endif -%}
+    <div class="page--fill">
         {{ vue(render_pass, '@WexampleSymfonyAiConversationBundle/vue/collection/chat/message-chat', { conversationId: conversation.id ~ '' }) }}
     </div>
 {%- endblock -%}

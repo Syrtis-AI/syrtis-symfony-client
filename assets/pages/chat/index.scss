@@ -1,23 +1,2 @@
 // The chat brings its own styles (message-chat); the page only fills its zone.
 @use '@wexample/symfony-design-system/css/shapes/page';
-@use '@wexample/symfony-design-system/css/shapes/toolbar';
-@use '@wexample/symfony-design-system/css/shapes/action-icon';
-
-// The way back to the list it was opened from, over the chat: one line, the
-// chat taking what is left.
-.chat-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.chat-page--head {
-  flex: none;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border-bottom: var(--border-separator);
-}
-
-.chat-page--title {
-  font-weight: var(--font-weight-strong);
-}
