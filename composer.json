@@ -14,10 +14,10 @@
     "doctrine/orm": "^3.3",
     "syrtis/php-client": ">=7.1.0",
     "wexample/php-helpers": ">=7.0.4",
-    "wexample/symfony-ai-conversation": ">=2.0.1",
+    "wexample/symfony-ai-conversation": ">=4.0.1",
     "wexample/symfony-api": ">=14.0.7",
-    "wexample/symfony-conversation": ">=1.0.1",
-    "wexample/symfony-conversation-ds": ">=1.0.1",
+    "wexample/symfony-conversation": ">=4.0.0",
+    "wexample/symfony-conversation-ds": ">=3.0.0",
     "wexample/symfony-helpers": ">=18.0.3"
   },
   "extra": {
