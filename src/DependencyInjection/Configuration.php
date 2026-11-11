@@ -23,6 +23,16 @@ class Configuration implements ConfigurationInterface
             // What the scenario sends back with every message it pushes to
             // the app, for the app to refuse what does not come from it.
             ->scalarNode('callback_secret')->isRequired()->cannotBeEmpty()->end()
+            // Who the scenario's agent is to the people talking with it: its
+            // name, its face — a picture's url, or an emoji.
+            ->arrayNode('agent')
+                ->addDefaultsIfNotSet()
+                ->children()
+                    ->scalarNode('label')->defaultValue('Syrtis')->cannotBeEmpty()->end()
+                    ->scalarNode('src')->defaultNull()->end()
+                    ->scalarNode('emoji')->defaultValue('🤖')->end()
+                ->end()
+            ->end()
             ->end();
 
         return $treeBuilder;

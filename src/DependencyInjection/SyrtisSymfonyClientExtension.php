@@ -11,6 +11,7 @@ class SyrtisSymfonyClientExtension extends AbstractWexampleSymfonyExtension
     final public const string PARAMETER_API_KEY = 'syrtis_symfony_client.api_key';
     final public const string PARAMETER_SCENARIO = 'syrtis_symfony_client.scenario';
     final public const string PARAMETER_CALLBACK_SECRET = 'syrtis_symfony_client.callback_secret';
+    final public const string PARAMETER_AGENT = 'syrtis_symfony_client.agent';
 
     public function load(
         array $configs,
@@ -22,6 +23,7 @@ class SyrtisSymfonyClientExtension extends AbstractWexampleSymfonyExtension
         $container->setParameter(self::PARAMETER_API_KEY, $config['api_key']);
         $container->setParameter(self::PARAMETER_SCENARIO, $config['scenario']);
         $container->setParameter(self::PARAMETER_CALLBACK_SECRET, $config['callback_secret']);
+        $container->setParameter(self::PARAMETER_AGENT, $config['agent']);
 
         $this->loadConfig(
             __DIR__,

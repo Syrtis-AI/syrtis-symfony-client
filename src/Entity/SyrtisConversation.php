@@ -19,6 +19,9 @@ use Wexample\SymfonyAiConversation\Entity\AgentConversation;
 #[ORM\Table(name: 'syrtis_conversation')]
 class SyrtisConversation extends AgentConversation
 {
+    /** What the agent's qualified name starts with: Syrtis runs it. */
+    final public const string AGENT_PREFIX = 'syrtis:';
+
     /** The scenario's id on the Syrtis the session was opened on. */
     #[ORM\Column(type: Types::STRING, length: 64)]
     protected string $scenario;
@@ -34,7 +37,7 @@ class SyrtisConversation extends AgentConversation
         $this->scenario = $scenario;
         // The agent is the scenario: what the conversation names its agent by
         // when the app holds no record of it.
-        $this->setAgentName('syrtis:'.$scenario);
+        $this->setAgentName(self::AGENT_PREFIX.$scenario);
     }
 
     public function getScenario(): string
